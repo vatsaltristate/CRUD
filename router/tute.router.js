@@ -5,7 +5,8 @@ module.exports = app => {
   
     router.post("/c", tutorials.create);
     router.get("/r", tutorials.findAll);
-    router.get("/r/:id", tutorials.findOne);
+//  router.get("/r/:id", tutorials.findOne);
+    router.get("/r/:title", tutorials.findOne);
     router.put("/u/:id", tutorials.update);
     router.delete("/d/:id", tutorials.delete);
     router.delete("/d", tutorials.deleteAll);
