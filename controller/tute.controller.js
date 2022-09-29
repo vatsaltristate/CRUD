@@ -47,19 +47,19 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.findOne = (req, res) => {
-  const id = req.params.id;
+// exports.findOne = (req, res) => {
+//   const id = req.params.id;
 
-  Tutorial.findByPk(id)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving data with id=" + id
-      });
-    });
-};
+//   Tutorial.findByPk(id)
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message: "Error retrieving data with id=" + id
+//       });
+//     });
+// };
 
 
 exports.update = (req, res) => {
@@ -130,4 +130,21 @@ exports.deleteAll = (req, res) => {
             message: "Could not delete with id somthing went to wrong " 
     });
 });
+};
+
+// find by title
+exports.findOne = (req, res) => {
+  const title = req.params.title;
+
+  Tutorial.findOne({
+    where: { title : title }
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving data "
+      });
+    });
 };
